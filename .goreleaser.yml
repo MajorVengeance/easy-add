@@ -6,6 +6,7 @@ builds:
   - CGO_ENABLED=0
   goos:
     - linux
+    - windows
   goarch:
     - amd64
     - arm
@@ -14,6 +15,9 @@ builds:
     - "7"
 archives:
 - format: binary
+  format_overrides: 
+    - goos: windows
+      format: zip
   name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
 checksum:
   name_template: 'checksums.txt'
